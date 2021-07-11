@@ -1,6 +1,4 @@
 
-
-
 /*
 typedef struct{
     int numero_soldados;
@@ -10,18 +8,23 @@ typedef struct{
     // char *lider[10];
 }   batallon;*/
 
-/*
 typedef struct s_westeros{
-    t_batallon bsoldados = {.numero_soldados = 20,
-                            .tipo_soldado = "Humano",
-                            .fuerza_total = 0
-                            .batallon = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100} };
-    int batallon_soldados[10] = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
-    int batallon_arqueros[10] = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
-    int batallon_zombies[5] = {100, 100, 100, 100, 100};
-}   t_westeros;*/
+   int  bsoldados[20];
+   int  barqueros[10];
+   int  bzombies[5];
+   int  reyMuerto;
+   int  Tywin;
+   int  Jaimie;
+   int  Cersei;
+   int  Tyrion;
+   int  Stannis;
+}   t_westeros;
 
 
+// westeros.c
+void    CreateWesterosMap(t_westeros *westeros);
+void    CreateWesterosFile(t_westeros *westeros);
+t_westeros *WesterosConfiguration(t_westeros *westeros);
 
-void WesterosConfiguration(void);
+// player.c
 int AskConfiguration(int option);

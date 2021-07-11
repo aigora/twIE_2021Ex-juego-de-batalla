@@ -3,7 +3,59 @@
 #include <time.h> // time(NULL)
 #include "game.h"
 
-void WesterosConfiguration(void)
+
+void CreateWesterosFile(t_westeros *westeros)
+
+{
+
+    FILE *w;
+
+    w = fopen("westeros.txt", "w");
+    if (w == NULL)
+    {   // Si el resultado es NULL mensaje de error
+        printf("Error al abrir el fichero westeros.txt.\n");
+    }
+    else
+    {
+        fprintf(w, "Ejercito de Westeros antes de empezar la Batalla\n");
+        fprintf(w, "Soldados:\n");
+        for (int i=0; i < 20; i++)
+            fprintf(w, "[%i]", westeros->bsoldados[i]);
+        fprintf(w, "\nArqueros:\n");
+        for (int i=0; i < 10; i++)
+            fprintf(w, "[%i]", westeros->barqueros[i]);
+        fprintf(w, "\nZombies:\n");
+        for (int i=0; i < 5; i++)
+            fprintf(w, "[%i]", westeros->bzombies[i]);
+
+        fprintf(w, "\n\n\n");
+        fclose(w); // Cerramos fichero
+    }
+}
+
+void    CreateWesterosMap(t_westeros *westeros)
+{
+    FILE *map;
+    map = fopen("map.txt", "w");
+    if (map == NULL)
+    {   // Si el resultado es NULL mensaje de error
+        printf("Error al abrir el fichero map.txt.\n");
+    }
+    else
+    {
+        fprintf(map, "\t\tWESTEROS MAP\n\n");
+
+        fprintf(map, "King's Landing\n");
+        fprintf(map, "Winterfell\n");
+        fprintf(map, "The Wal\n");
+        fprintf(map, "Storm's End\n");
+        fprintf(map, "Riverrun\n");
+        fprintf(map, "CasterlyRock\n");
+        fprintf(map, "Sunspear\n");
+    }
+}
+
+    t_westeros *WesterosConfiguration(t_westeros *westeros)
 {
     int batallon_soldados[20];
     int batallon_arqueros[10];
@@ -13,14 +65,24 @@ void WesterosConfiguration(void)
     for (int i=0; i < 20; i++)
     {
         batallon_soldados[i] = (rand() % 50) + 10; // random numbers 1 - 50
+        westeros->bsoldados[i] = batallon_soldados[i];
         if (i < 5)
         {
             batallon_arqueros[i] =  (rand() % 20) + 10;
+            westeros->barqueros[i] = batallon_arqueros[i];
             batallon_zombies[i] = (rand() % 60) + 30;
+            westeros->bzombies[i] = batallon_zombies[i];
         }
         if (i >= 5 && i < 10)
-            batallon_arqueros[i] =  (rand() % 20) + 10;
+        {
+            batallon_arqueros[i] = (rand() % 20) + 10;
+            westeros->barqueros[i] = batallon_arqueros[i];
+        }
     }
+
+    CreateWesterosFile(westeros);
+    CreateWesterosMap(westeros);
+
 
     printf("Soldados:\n");
     for (int i=0; i < 20; i++)
@@ -39,13 +101,6 @@ void WesterosConfiguration(void)
     {
         printf("[%i]", batallon_zombies[i]);
     }
-
-    //t_westeros westeros;
-    //westeros.batallon_soldados = &batallon_soldados;
-
-    //printf(bsoldados.numero_soldados);
-    //printf(bsoldados.battallon);
-    // westeros.bsoldados.lider  pensar en implementar lider o no
 
 
 

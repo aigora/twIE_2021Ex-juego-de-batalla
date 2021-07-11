@@ -17,7 +17,26 @@ int main(void)
 
     // Loop principal
 
-    WesterosConfiguration(); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa
+    //t_westeros *westeros = malloc (sizeof(myStruct_t));
+    //bzero(foo, sizeof(myStruct_t))
+
+    t_westeros westeros = {{0, 0, 0, 0, 0, 0, 0, 0, 0,0 ,0,0,0,0,0,0,0,0,0,0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0,0 },
+                            {0, 0, 0, 0, 0},
+                            500,
+                            300, 250, 200, 150, 300}; // Inicializando a 0 para despues sustituit por valores random
+    WesterosConfiguration(&westeros); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa
+
+    printf("\nPrueba estructura:\n");
+    for (int i=0; i < 20; i++)
+    {
+        printf("[%i]", westeros.bsoldados[i]);
+    }
+    printf("\nPrueba estructura:\n");
+    for (int i=0; i < 10; i++)
+    {
+        printf("[%i]", westeros.barqueros[i]);
+    }
 
     while (finishGame == 0)
     {
