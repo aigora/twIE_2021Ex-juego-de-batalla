@@ -18,7 +18,7 @@ void WesterosConfiguration(void)
             batallon_arqueros[i] =  (rand() % 20) + 10;
             batallon_zombies[i] = (rand() % 60) + 30;
         }
-        if (i < 10 && i >= 5)
+        if (i >= 5 && i < 10)
             batallon_arqueros[i] =  (rand() % 20) + 10;
     }
 
@@ -31,14 +31,17 @@ void WesterosConfiguration(void)
     printf("\nArqueros:\n");
     for (int i=0; i < 10; i++)
     {
-        printf("[%i]", batallon_soldados[i]);
+        printf("[%i]", batallon_arqueros[i]);
     }
 
     printf("\nZombies:\n");
     for (int i=0; i < 5; i++)
     {
-        printf("[%i]", batallon_soldados[i]);
+        printf("[%i]", batallon_zombies[i]);
     }
+
+    //t_westeros westeros;
+    //westeros.batallon_soldados = &batallon_soldados;
 
     //printf(bsoldados.numero_soldados);
     //printf(bsoldados.battallon);
