@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include "game.h"
 
 int main(void)
 {
+    printf("\033[1;32m#######################################################\n");
     printf("##########        Battle  for  Westeros      ##########\n");
+    printf("#######################################################\033[0;m\n");
 
     // WesterosConfiguration(); // Aqui se inicia la configuracion del Enemigo (Westeros)
 
@@ -45,6 +48,19 @@ int main(void)
                     break ;
               }
         }
+    }
+
+    if (finishGame == 1)
+    {
+        printf("\n\033[1;32m#############################################################\n");
+        printf("## You are the Winner! Westeros is yours! Congratulations! ##\n");
+        printf("#############################################################\033[0;m\n");
+    }
+    if (finishGame == 2)
+    {
+        printf("\n\033[1;31m############################################################\n");
+        printf("######  Westeros is invencible! Good luck next time.  ######\n");
+        printf("############################################################\033[0;m\n");
     }
 
 
