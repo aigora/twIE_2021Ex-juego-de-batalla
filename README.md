@@ -1,11 +1,12 @@
-# [Título del trabajo]
+# Juego de Batalla
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+Diego Fernandes Alves. ()
+Diego Bastida Juanes. ()
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+El objetivo de este ejercicio es diseñar e implementar un juego de batalla simplificado donde el jugador liderará el ejército de Daenerys Targaryen y sus tres dragones contra las fuerzas combinadas de Westeros (los generales Tywin, Jaimie, Cersei, Tyrion, Stannis y el Rey Muerto)
