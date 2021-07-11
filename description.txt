@@ -1,0 +1,6 @@
+Westeros Army:
+    20 Batallones de Soldados humanos fuerzas [10 - 50]
+    10 Batallones de Soldados arqueros fuerzas [10 - 20]
+    5 Batallones de Soldados zombies fuerzas [ 30 - 60]
+???? Generales: Tywin, Jaimie, Cersei, Stannis
+    Rey Muerto

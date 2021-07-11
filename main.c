@@ -17,9 +17,11 @@ int main(void)
 
     // Loop principal
 
-    while (finishGame == 0 && option == 0)
+    WesterosConfiguration(); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa
+
+    while (finishGame == 0)
     {
-        if (option == 0) // Inicio de juego o nuevo turno
+        if (option == 0 || option == 1) // Inicio de juego o nuevo turno
         {
            // Menu principal
 
@@ -28,7 +30,7 @@ int main(void)
               printf(menu);
               scanf("%i", &option);
               fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
-              printf("%i", option);
+              printf("%i\n", option);
            }
            switch(option)
               {
@@ -38,7 +40,7 @@ int main(void)
                     printf("Start Game");
 
                     turno += 1;
-                    option = 0; // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
+                    option = AskConfiguration(option); // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
 
                     finishGame = 1; // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
                     // por ahora ponemos la variable a 1 para que no etre en bucle, pero se pondrá a 1 cuando haya ganador del juego más adelante
@@ -47,6 +49,11 @@ int main(void)
                     finishGame = 3;
                     break ;
               }
+        }
+        if (option == 2)
+        {
+            // continue random
+            finishGame = 1;
         }
     }
 
