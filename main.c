@@ -27,23 +27,23 @@ int main(void)
               fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
               printf("%i", option);
            }
-        }
+           switch(option)
+              {
+                case 1:
+                case 2:
+                    // Juego empieza o continua
+                    printf("Start Game");
 
-        if (option == 1 || option == 2)
-        {
-           // Juego empieza o continua
-            printf("Start Game");
+                    turno += 1;
+                    option = 0; // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
 
-            turno += 1;
-            option = 0; // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
-
-            finishGame = 1; // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
-            // por ahora ponemos la variable a 1 para que no etre en bucle, pero se pondrá a 1 cuando haya ganador del juego más adelante
-        }
-
-        if (option == 3)
-        {
-          finishGame = 3;
+                    finishGame = 1; // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
+                    // por ahora ponemos la variable a 1 para que no etre en bucle, pero se pondrá a 1 cuando haya ganador del juego más adelante
+                    break;
+                case 3:
+                    finishGame = 3;
+                    break ;
+              }
         }
     }
 
@@ -52,6 +52,8 @@ int main(void)
     {
         printf("\nBye!\n");
     }
+
+    return 0;
 
 
 
