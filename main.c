@@ -14,9 +14,43 @@ int main(void)
 
     // Loop principal
 
-    while (finishGame == 0)
+    while (finishGame == 0 && option == 0)
     {
-        while (option != 1 && option != 2 && option != 3)
+        if (option == 0) // Inicio de juego o nuevo turno
+        {
+           // Menu principal
+
+           while (option != 1 && option != 2 && option != 3)
+           {
+              printf(menu);
+              scanf("%i", &option);
+              fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
+              printf("%i", option);
+           }
+        }
+
+        if (option == 1 || option == 2)
+        {
+           // Juego empieza o continua
+            printf("Start Game");
+
+            turno += 1;
+            option = 0; // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
+
+            finishGame = 1; // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
+            // por ahora ponemos la variable a 1 para que no etre en bucle, pero se pondrá a 1 cuando haya ganador del juego más adelante
+        }
+
+        if (option == 3)
+        {
+          finishGame = 3;
+        }
+    }
+
+
+    if (finishGame == 3)
+    {
+        printf("\nBye!\n");
     }
 
 
