@@ -16,11 +16,7 @@ int main(void)
 
     while (finishGame == 0)
     {
-        if (option == 0) // Inicio de juego o nuevo turno
-        {
-
-
-        }
+        while (option != 1 && option != 2 && option != 3)
     }
 
 
