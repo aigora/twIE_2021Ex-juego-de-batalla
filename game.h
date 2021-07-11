@@ -1,12 +1,9 @@
 
-/*
-typedef struct{
-    int numero_soldados;
-    int fuerza_total;
-    char tipo_soldado[10];
-    int batallon[BUFFERSIZE];
-    // char *lider[10];
-}   batallon;*/
+typedef struct s_mapa{
+    int enemigos_fuerza[31];
+    int enemigos_tipo[31];
+    int vivos_muertos[31];
+}   t_mapa;
 
 typedef struct s_westeros{
    int  bsoldados[20];

@@ -1,9 +1,10 @@
-		WESTEROS MAP
+               WESTEROS MAP
 
 King's Landing
 Winterfell
-The Wal
+The Wall
 Storm's End
- Riverrun
+Riverrun
+[ReyMuerto]
 CasterlyRock
 Sunspear
