@@ -4,8 +4,8 @@
 
 ## Integrantes del equipo
 
-Diego Fernandes Alves. ()
-Diego Bastida Juanes. ()
+Diego Fernandes Alves. ([DiegoFernandesAlves](https://github.com/DiegoFernandesAlves))
+Diego Bastida Juanes. ([DiegoBastida](https://github.com/DiegoBastida))
 
 ## Objetivos del trabajo
 
