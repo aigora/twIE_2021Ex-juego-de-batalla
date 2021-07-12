@@ -15,27 +15,23 @@ int main(void)
                 "2 - Continue Automatically (The game will run until there is a winner)\n" \
                 "3 - Exit game\n\033[0;m";
 
-    // Loop principal
 
-    //t_westeros *westeros = malloc (sizeof(myStruct_t));
-    //bzero(foo, sizeof(myStruct_t))
+    t_westeros westeros = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                            {1,2,3,4,5,6,7,0,0,0,0,0,0,0,0,0,0,0,0,0}, // se inicializa de esta manera para asegurar que hay almenos un enemigo ocupando cada localizacion
+                            {0,0,0,0,0,0,0,0,0,0},
+                            {0,0,0,0,0,0,0,0,0,0},
+                            {0,0,0,0,0},
+                            {0,0,0,0,0},
+                            500, 0,
+                            300, 0, 250, 0, 200, 0, 150, 0, 300, 0,
+                            NULL}; // Inicializando a 0 para despues sustituit por valores random
 
-    t_westeros westeros = {{0, 0, 0, 0, 0, 0, 0, 0, 0,0 ,0,0,0,0,0,0,0,0,0,0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0,0 },
-                            {0, 0, 0, 0, 0},
-                            500,
-                            300, 250, 200, 150, 300}; // Inicializando a 0 para despues sustituit por valores random
     WesterosConfiguration(&westeros); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa
 
-    printf("\nPrueba estructura:\n");
-    for (int i=0; i < 20; i++)
+    if (westeros.error != NULL)
     {
-        printf("[%i]", westeros.bsoldados[i]);
-    }
-    printf("\nPrueba estructura:\n");
-    for (int i=0; i < 10; i++)
-    {
-        printf("[%i]", westeros.barqueros[i]);
+        printf("ERROR: %s", westeros.error);
+        return (0);
     }
 
     while (finishGame == 0)
@@ -49,7 +45,6 @@ int main(void)
               printf(menu);
               scanf("%i", &option);
               fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
-              printf("%i\n", option);
            }
            switch(option)
               {
@@ -91,9 +86,7 @@ int main(void)
 
 
     if (finishGame == 3)
-    {
         printf("\nBye!\n");
-    }
 
     return 0;
 
