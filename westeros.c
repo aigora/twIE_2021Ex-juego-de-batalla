@@ -50,7 +50,7 @@ void CreateWesterosFile(t_westeros *westeros)
         - [int] Tyrion 150
         - [int] Stannis 300
 */
-t_westeros  *WesterosConfiguration(t_westeros *westeros)
+t_westeros  *WesterosConfiguration(t_westeros *westeros, t_mapa *mapa)
 
 {
     srand(time(NULL)); // para evitar obtener la misma secuencia de numeros random
@@ -79,7 +79,8 @@ t_westeros  *WesterosConfiguration(t_westeros *westeros)
     }
 
     CreateWesterosFile(westeros);
-    CreateMap(westeros);
+
+    CreateMap(westeros, mapa);
 
     // para debuggear BORRAR luego
 

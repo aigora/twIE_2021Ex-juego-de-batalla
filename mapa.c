@@ -6,70 +6,85 @@
 */
 void    ContenidoMapaXLocalizacion(t_westeros *westeros, t_mapa *mapa, int localizacion, FILE *map)
 {
-        int i = 0;
-        while (mapa[localizacion].enemigos_fuerza[i] != 0)
-        {
-            if (mapa[localizacion].enemigos_tipo[i] == 's')
-                fprintf(map, "[∆-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[localizacion].enemigos_tipo[i] == 'a')
-                fprintf(map, "[⩥-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[0].enemigos_tipo[i] == 'z')
-                fprintf(map, "[§-%i]", mapa[localizacion].enemigos_fuerza[i]);
+    if (localizacion == 0)
+        fprintf(map, "King's Landing\n");
+    if (localizacion == 1)
+        fprintf(map, "\n\nWinterfell\n");
+    if (localizacion == 2)
+        fprintf(map, "\n\nThe Wall\n");
+    if (localizacion == 3)
+        fprintf(map, "\n\nStorm's End\n");
+    if (localizacion == 4)
+        fprintf(map, "\n\nRiverrun\n");
+    if (localizacion == 5)
+        fprintf(map, "\n\nCasterlyRock\n");
+    if (localizacion == 6)
+        fprintf(map, "\n\nSunspear\n");
 
-            if (mapa[localizacion].enemigos_tipo[i] == 'M')
-                fprintf(map, "[ReyMuerto-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[localizacion].enemigos_tipo[i] == 'T')
-                fprintf(map, "[Tywin-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[0].enemigos_tipo[i] == 'J')
-                fprintf(map, "[Jaimie-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[localizacion].enemigos_tipo[i] == 'C')
-                fprintf(map, "[Cersei-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[localizacion].enemigos_tipo[i] == 't')
-                fprintf(map, "[Tyrion-%i]", mapa[localizacion].enemigos_fuerza[i]);
-            if (mapa[0].enemigos_tipo[i] == 'S')
-                fprintf(map, "[Stannis-%i]", mapa[localizacion].enemigos_fuerza[i]);
+    int i = 0;
+    while (mapa[localizacion].enemigos_fuerza[i] != 0)
+    {
+        if (mapa[localizacion].enemigos_tipo[i] == 's')
+            fprintf(map, "[∆-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[localizacion].enemigos_tipo[i] == 'a')
+            fprintf(map, "[⩥-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[localizacion].enemigos_tipo[i] == 'z')
+            fprintf(map, "[§-%i]", mapa[localizacion].enemigos_fuerza[i]);
 
-            i++;
-        }
+        if (mapa[localizacion].enemigos_tipo[i] == 'M')
+            fprintf(map, "[ReyMuerto-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[localizacion].enemigos_tipo[i] == 'T')
+            fprintf(map, "[Tywin-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[0].enemigos_tipo[i] == 'J')
+            fprintf(map, "[Jaimie-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[localizacion].enemigos_tipo[i] == 'C')
+            fprintf(map, "[Cersei-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[localizacion].enemigos_tipo[i] == 't')
+            fprintf(map, "[Tyrion-%i]", mapa[localizacion].enemigos_fuerza[i]);
+        if (mapa[0].enemigos_tipo[i] == 'S')
+            fprintf(map, "[Stannis-%i]", mapa[localizacion].enemigos_fuerza[i]);
+
+        i++;
+    }
 }
 
 void    AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int localizacion)
 {
-    if (westeros->localizacion_reyMuerto == localizacion)
+    if (westeros->localizacion_reyMuerto == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->reyMuerto;
         mapa[localizacion].enemigos_tipo[*contador] = 'M';
-        contador++;
+        (*contador++);
     }
-    if (westeros->localizacion_tywin == localizacion)
+    if (westeros->localizacion_tywin == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Tywin;
         mapa[localizacion].enemigos_tipo[*contador] = 'T';
-        contador++;
+        (*contador++);
     }
-    if (westeros->localizacion_jaimie == localizacion)
+    if (westeros->localizacion_jaimie == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Jaimie;
         mapa[localizacion].enemigos_tipo[*contador] = 'J';
-        contador++;
+        (*contador++);
     }
-    if (westeros->localizacion_cersei == localizacion)
+    if (westeros->localizacion_cersei == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Cersei;
         mapa[localizacion].enemigos_tipo[*contador] = 'C';
-        contador++;
+        (*contador++);
     }
-    if (westeros->localizacion_tyrion == localizacion)
+    if (westeros->localizacion_tyrion == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Tyrion;
         mapa[localizacion].enemigos_tipo[*contador] = 't';
-        contador++;
+        (*contador++);
     }
-    if (westeros->localizacion_stannis == localizacion)
+    if (westeros->localizacion_stannis == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Stannis;
         mapa[localizacion].enemigos_tipo[*contador] = 'S';
-        contador++;
+        (*contador++);
     }
 }
 
@@ -218,7 +233,9 @@ void    AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa)
             mapa6++;
         }
     }
-     AddGeneralesMapa(westeros, mapa, &mapa0, 0);
+
+
+    AddGeneralesMapa(westeros, mapa, &mapa0, 0);
     AddGeneralesMapa(westeros, mapa, &mapa1, 1);
     AddGeneralesMapa(westeros, mapa, &mapa2, 2);
     AddGeneralesMapa(westeros, mapa, &mapa3, 3);
@@ -248,7 +265,7 @@ void    AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa)
     //El jugador podrá consultarlo y ver donde le interesa atacar
 
 
-void    CreateMap(t_westeros *westeros)
+void    CreateMap(t_westeros *westeros, t_mapa *mapa)
 {
     FILE *map;
     map = fopen("map.txt", "w");
@@ -268,73 +285,17 @@ void    CreateMap(t_westeros *westeros)
         westeros->localizacion_stannis = (rand() % 7) + 1;
 
         // Asignando valores para las 7 localizaciones
-        t_mapa mapa[7] = { {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0},
-
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    0}
-                    };
 
 
         AddEnemigosMapa(westeros, mapa);
 
-        fprintf(map, "King's Landing\n");
         ContenidoMapaXLocalizacion(westeros, mapa, 0, map);
-
-
-
-        fprintf(map, "\n\nWinterfell\n");
-        if (westeros->localizacion_reyMuerto == 2)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
-        fprintf(map, "\nThe Wall\n");
-        if (westeros->localizacion_reyMuerto == 3)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
-        fprintf(map, "\nStorm's End\n");
-        if (westeros->localizacion_reyMuerto == 4)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
-        fprintf(map, "\nRiverrun\n");
-        if (westeros->localizacion_reyMuerto == 5)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
-        fprintf(map, "\nCasterlyRock\n");
-        if (westeros->localizacion_reyMuerto == 6)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
-        fprintf(map, "\nSunspear\n");
-        if (westeros->localizacion_reyMuerto == 7)
-        {
-            fprintf(map, "[ReyMuerto]\n");
-        }
+        ContenidoMapaXLocalizacion(westeros, mapa, 1, map);
+        ContenidoMapaXLocalizacion(westeros, mapa, 2, map);
+        ContenidoMapaXLocalizacion(westeros, mapa, 3, map);
+        ContenidoMapaXLocalizacion(westeros, mapa, 4, map);
+        ContenidoMapaXLocalizacion(westeros, mapa, 5, map);
+        ContenidoMapaXLocalizacion(westeros, mapa, 6, map);
 
         fclose(map);
     }

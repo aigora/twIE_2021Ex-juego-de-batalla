@@ -1,20 +1,24 @@
                WESTEROS MAP
 
 King's Landing
-[∆-29]
+[∆-20][∆-22]
 
 Winterfell
-[ReyMuerto]
+[∆-42][∆-42][§-34][Tywin-300]
 
 The Wall
+[∆-44][∆-52][∆-38][⩥-27][⩥-37][⩥-23][⩥-26][⩥-13][§-47][§-60][§-37]
 
 Storm's End
+[∆-28][∆-43][⩥-13][⩥-27][§-58][Tyrion-150]
 
 Riverrun
+[∆-40][∆-19][∆-16][∆-13][ReyMuerto-500]
 
 CasterlyRock
-
+[∆-26][∆-41][∆-54][⩥-26][⩥-35][⩥-11][Jaimie-250][Stannis-300]
 
 Sunspear
+[∆-22][∆-15][∆-42][∆-11][Cersei-200]
 
 

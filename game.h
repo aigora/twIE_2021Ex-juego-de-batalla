@@ -4,14 +4,23 @@
 
 #define ERROR_MAP "Error al abrir el fichero map.txt.\n"
 #define ERROR_WESTEROS "Error al abrir el fichero westeros.txt.\n"
+#define ERROR_EJERCITO "Error al abrir el fichero jugador.txt.\n"
 
+
+typedef struct s_jugador{
+    int     ejercito[30];
+    char    tipo[30];
+    int     localizacion_ataque;
+    int     final;
+    char   *error;
+}   t_jugador;
 
 
 
 typedef struct s_mapa{
     int     enemigos_fuerza[31];
     char    enemigos_tipo[31];
-    int     zona_conquistada; //mirar mas tarde si hace falta
+    int     zona_conquistada;
 }   t_mapa;
 
 
@@ -42,14 +51,18 @@ int      bsoldados[20];
 
 
 // westeros.c
-void CreateWesterosFile(t_westeros *westeros);
+void CreateWesterosFile(t_westeros *westeros, t_mapa *mapa);
 t_westeros  *WesterosConfiguration(t_westeros *westeros);
 
-// player.c
-int AskConfiguration(int option);
+// jugador.c
+int         AskConfiguration(int option, t_mapa *mapa, t_jugador *jugador);
+void        EjercitoJugador(t_jugador *jugador);
 
 // mapa.c
 void ContenidoMapaXLocalizacion(t_westeros *westeros, t_mapa *mapa, int localizacion, FILE *map);
 void AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int localizacion);
 void AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa);
-void CreateMap(t_westeros *westeros);
+void CreateMap(t_westeros *westeros, t_mapa *mapa);
+
+// batalla.c
+int     Ataque(t_mapa *mapa, t_jugador *jugador, int localizacion);

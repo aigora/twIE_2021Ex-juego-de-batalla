@@ -15,6 +15,12 @@ int main(void)
                 "2 - Continue Automatically (The game will run until there is a winner)\n" \
                 "3 - Exit game\n\033[0;m";
 
+    // Ejercito compuesto por la Reina Daenerys Targaryen, sus dos dragones y sus soldados
+    t_jugador   jugador = {{700,500,600,400,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                        {'R','D','D','D',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                        0, 0, NULL};
+
+
 
     t_westeros westeros = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                             {1,2,3,4,5,6,7,0,0,0,0,0,0,0,0,0,0,0,0,0}, // se inicializa de esta manera para asegurar que hay almenos un enemigo ocupando cada localizacion
@@ -28,9 +34,40 @@ int main(void)
                             NULL}; // Inicializando a 0 para despues sustituit por valores random
 
 
+
+    t_mapa mapa[7] = { {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    0}
+                    };
+
     // Aqui se inicia la configuracion del Enemigo (Westeros)
-    WesterosConfiguration(&westeros); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa de forma random
+    WesterosConfiguration(&westeros, mapa); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa de forma random
     // El ejercito del enemigo es colocado de forma random sobre el mapa de manera que siempre halla alguien contra quien enfrentarse
+    EjercitoJugador(&jugador);
 
     if (westeros.error != NULL)
     {
@@ -40,7 +77,7 @@ int main(void)
 
     while (finishGame == 0)
     {
-        if (option == 0 || option == 1) // Inicio de juego o nuevo turno
+        if (option == 0) // Inicio de juego o nuevo turno
         {
            // Menu principal
 
@@ -58,16 +95,20 @@ int main(void)
                     printf("Start Game");
 
                     turno += 1;
-                    option = AskConfiguration(option); // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
+                    option = AskConfiguration(option, mapa, &jugador); // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
 
-                    finishGame = 1; // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
-                    // por ahora ponemos la variable a 1 para que no etre en bucle, pero se pondrá a 1 cuando haya ganador del juego más adelante
+                    jugador->final = Ataque(&westeros, &jugador); // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
+
+                    if (jugador->final == 1)
+                        finishGame = 1;
+
                     break;
                 case 3:
                     finishGame = 3;
                     break ;
               }
         }
+        // aqui option va a ser 0 si el jugador está jugando manualmente o 2 si es random
         if (option == 2)
         {
             // continue random
