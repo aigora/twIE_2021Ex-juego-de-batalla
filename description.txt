@@ -3,4 +3,10 @@ Westeros Army:
     10 Batallones de Soldados arqueros fuerzas [10 - 20]
     5 Batallones de Soldados zombies fuerzas [ 30 - 60]
     Generales: Tywin 300, Jaimie 250, Cersei 200, Tyrion 150, Stannis 300
+
     Rey Muerto fuerza 500
+
+
+
+    TO DO
+    explicar funcionamiento juego description.txt ???

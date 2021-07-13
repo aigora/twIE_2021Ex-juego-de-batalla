@@ -1,8 +1,10 @@
                WESTEROS MAP
 
 King's Landing
-[∆-56][∆-38][∆-40]
+[∆-29]
+
 Winterfell
+[ReyMuerto]
 
 The Wall
 
@@ -12,4 +14,7 @@ Riverrun
 
 CasterlyRock
 
+
 Sunspear
+
+

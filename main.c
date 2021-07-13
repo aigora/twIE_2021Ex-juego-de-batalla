@@ -24,9 +24,13 @@ int main(void)
                             {0,0,0,0,0},
                             500, 0,
                             300, 0, 250, 0, 200, 0, 150, 0, 300, 0,
+
                             NULL}; // Inicializando a 0 para despues sustituit por valores random
 
-    WesterosConfiguration(&westeros); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa
+
+    // Aqui se inicia la configuracion del Enemigo (Westeros)
+    WesterosConfiguration(&westeros); // El ejercito del enemigo no necesita confuguracion, se crea al inicio del programa de forma random
+    // El ejercito del enemigo es colocado de forma random sobre el mapa de manera que siempre halla alguien contra quien enfrentarse
 
     if (westeros.error != NULL)
     {
@@ -89,11 +93,6 @@ int main(void)
         printf("\nBye!\n");
 
     return 0;
-
-
-
-
-
 
 
 }
