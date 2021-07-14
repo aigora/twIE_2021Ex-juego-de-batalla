@@ -25,7 +25,7 @@ gcc *.c -Wall -Wextra -Werror
 ./a.out
 ```
 
-```(./a.out ó a./exe)```
+```(./a.out ó a./exe)``` (cómo compilar)
 
 La Configuracion de ambos ejercitos es asignada de forma random, por lo que las probabilidades de ganar/perder varían en cada ronda. Los generales mantienen fuerzas fijas.
 
