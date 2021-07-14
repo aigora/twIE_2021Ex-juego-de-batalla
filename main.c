@@ -9,16 +9,15 @@ int main(void)
 
     // WesterosConfiguration(); // Aqui se inicia la configuracion del Enemigo (Westeros)
 
-    int option = 0, finishGame = 0, turno = 0;
+    int     option = 0, finishGame = 0;
 
-    char *menu = "\033[1;35m\nMenu:\n1 - Choose my configuration\n" \
-                "2 - Continue Automatically (The game will run until there is a winner)\n" \
-                "3 - Exit game\n\033[0;m";
+    char    *menu = "\033[1;35m\nMenu:\n1 - Configurar el ataque\n2 - Salir del juego\n\033[0;m";
 
     // Ejercito compuesto por la Reina Daenerys Targaryen, sus dos dragones y sus soldados
-    t_jugador   jugador = {{700,500,600,400,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                        {'R','D','D','D',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                        0, 0, NULL};
+    t_jugador   jugador = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,800,700,600,500},
+                        {'s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','R','D','D','D',},
+                        0, NULL};
+    // Ejercito Enemigo
 
 
 
@@ -35,32 +34,39 @@ int main(void)
 
 
 
-    t_mapa mapa[7] = { {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+   // Mapa con las 7 distintas loalizaciones
+    t_mapa  mapa[7] = { {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0},
 
-                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+
+                    {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                     0}
                     };
 
@@ -69,50 +75,41 @@ int main(void)
     // El ejercito del enemigo es colocado de forma random sobre el mapa de manera que siempre halla alguien contra quien enfrentarse
     EjercitoJugador(&jugador);
 
-    if (westeros.error != NULL)
+    if (westeros.error != NULL || jugador.error != NULL)
     {
-        printf("ERROR: %s", westeros.error);
-        return (0);
+        if (westeros.error != NULL)
+            printf("ERROR: %s", westeros.error);
+        else
+            printf("ERROR: %s", jugador.error);
+        return 0;
     }
 
     while (finishGame == 0)
     {
-        if (option == 0) // Inicio de juego o nuevo turno
+        while (option != 1 && option != 2)
         {
-           // Menu principal
-
-           while (option != 1 && option != 2 && option != 3)
-           {
-              printf(menu);
-              scanf("%i", &option);
-              fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
-           }
-           switch(option)
-              {
-                case 1:
-                case 2:
-                    // Juego empieza o continua
-                    printf("Start Game");
-
-                    turno += 1;
-                    option = AskConfiguration(option, mapa, &jugador); // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
-
-                    jugador->final = Ataque(&westeros, &jugador); // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 3
-
-                    if (jugador->final == 1)
-                        finishGame = 1;
-
-                    break;
-                case 3:
-                    finishGame = 3;
-                    break ;
-              }
+            printf(menu);
+            scanf("%i", &option);
+            fflush(stdin); // para evitar bucles si el usuario introduce valor no int, se le vuelve a mostart el menu para que elija bien 1, 2 o 3
         }
-        // aqui option va a ser 0 si el jugador está jugando manualmente o 2 si es random
-        if (option == 2)
+        switch(option)
         {
-            // continue random
-            finishGame = 1;
+            case 1:
+                // Juego empieza o continua
+                printf("\n\x1b[34mComienza nuevo ataque.\x1b[0m\n");
+
+turno += 1;
+                jugador.localizacion_ataque = AskConfiguration(mapa); // Para empezar turno nuevo en el siguiente loop y que el jugador eliga nueva opcion
+
+                finishGame = Ataque(mapa, &jugador, jugador.localizacion_ataque - 1); // el juego sigue hasta que esta var es 1 o el jugador elige Salir option = 2
+
+
+                                break;
+            case 2:
+                finishGame = 3;
+                break ;
+
+
         }
     }
 
@@ -124,9 +121,9 @@ int main(void)
     }
     if (finishGame == 2)
     {
-        printf("\n\033[1;31m############################################################\n");
-        printf("######  Westeros is invencible! Good luck next time.  ######\n");
-        printf("############################################################\033[0;m\n");
+        printf("\n\033[1;31m##################################################################\n");
+        printf("######  Westeros es invencible! Buena suerte la siguiente vez.  ##\n");
+        printf("##################################################################\033[0;m\n");
     }
 
 

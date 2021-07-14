@@ -8,5 +8,9 @@ Westeros Army:
 
 
 
-    TO DO
-    explicar funcionamiento juego description.txt ???
+   Ejercito Daenerys
+    Daenerys 500
+    Dragon1 600
+    Dragon2 500
+    Dragon3 400
+    26 batallones de soldados [20 - 50]

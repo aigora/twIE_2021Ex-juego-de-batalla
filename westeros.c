@@ -82,29 +82,6 @@ t_westeros  *WesterosConfiguration(t_westeros *westeros, t_mapa *mapa)
 
     CreateMap(westeros, mapa);
 
-    // para debuggear BORRAR luego
-
-    printf("Soldados:\n");
-    for (int i=0; i < 20; i++)
-    {
-        printf("[%i]", westeros->bsoldados[i]);
-        printf("{%i}", westeros->localizaciones_soldados[i]);
-    }
-
-    printf("\nArqueros:\n");
-    for (int i=0; i < 10; i++)
-    {
-        printf("[%i]", westeros->barqueros[i]);
-        printf("{%i}", westeros->localizaciones_arqueros[i]);
-    }
-
-    printf("\nZombies:\n");
-    for (int i=0; i < 5; i++)
-    {
-        printf("[%i]", westeros->bzombies[i]);
-        printf("{%i}", westeros->localizaciones_zombies[i]);
-    }
-
     return westeros;
 
 }
