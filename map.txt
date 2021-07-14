@@ -1,4 +1,22 @@
-               WESTEROS MAP
+		WESTEROS MAP
 
+King's Landing
+[∆-30][∆-11][∆-14][∆-35][ReyMuerto-500][Cersei-200][Stannis-300]
 
+Winterfell
+[∆-17][∆-51][⩥-31]
 
+The Wall
+[∆-58][∆-56][∆-20][⩥-30][⩥-10][Tywin-300]
+
+Storm's End
+[∆-49][∆-33][∆-29][⩥-16][⩥-21][⩥-24][⩥-20][§-44][§-61][Jaimie-250][Tyrion-150]
+
+Riverrun
+[∆-40][∆-50][⩥-15][⩥-27][§-69][§-66][§-63]
+
+CasterlyRock
+[∆-51][∆-44]
+
+Sunspear
+[∆-29][∆-45][∆-35][∆-20][⩥-12]

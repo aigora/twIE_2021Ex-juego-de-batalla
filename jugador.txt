@@ -1,1 +1,11 @@
+Ejercito de Daenerys Targaryen antes de empezar la Batalla
 
+
+Ejercito:
+[s-50][s-161][s-160][s-63][s-96][s-65][s-127][s-104][s-154][s-96][s-107][s-146][s-119][s-111][s-145][s-137]
+
+Daenerys Targaryen:
+[Daenerys-800]
+
+Dragones:
+[D-700][D-600][D-500]
