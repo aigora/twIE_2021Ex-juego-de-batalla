@@ -32,7 +32,7 @@ void    ContenidoMapaXLocalizacion(t_mapa *mapa, int localizacion, FILE *map)
             if (mapa[localizacion].enemigos_tipo[i] == 'z')
                 fprintf(map, "[§-%i]", mapa[localizacion].enemigos_fuerza[i]);
 
-         if (mapa[localizacion].enemigos_tipo[i] == 'M')
+            if (mapa[localizacion].enemigos_tipo[i] == 'M')
                 fprintf(map, "[ReyMuerto-%i]", mapa[localizacion].enemigos_fuerza[i]);
             if (mapa[localizacion].enemigos_tipo[i] == 'T')
                 fprintf(map, "[Tywin-%i]", mapa[localizacion].enemigos_fuerza[i]);
@@ -50,41 +50,42 @@ void    ContenidoMapaXLocalizacion(t_mapa *mapa, int localizacion, FILE *map)
 
 void    AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int localizacion)
 {
+
     if (westeros->localizacion_reyMuerto == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->reyMuerto;
         mapa[localizacion].enemigos_tipo[*contador] = 'M';
-        (*contador++);
+        (*contador)++;
     }
     if (westeros->localizacion_tywin == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Tywin;
         mapa[localizacion].enemigos_tipo[*contador] = 'T';
-        (*contador++);
+        (*contador)++;
     }
     if (westeros->localizacion_jaimie == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Jaimie;
         mapa[localizacion].enemigos_tipo[*contador] = 'J';
-        (*contador++);
+        (*contador)++;
     }
     if (westeros->localizacion_cersei == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Cersei;
         mapa[localizacion].enemigos_tipo[*contador] = 'C';
-        (*contador++);
+        (*contador)++;
     }
     if (westeros->localizacion_tyrion == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Tyrion;
         mapa[localizacion].enemigos_tipo[*contador] = 't';
-        (*contador++);
+        (*contador)++;
     }
     if (westeros->localizacion_stannis == localizacion+1)
     {
         mapa[localizacion].enemigos_fuerza[*contador] = westeros->Stannis;
         mapa[localizacion].enemigos_tipo[*contador] = 'S';
-        (*contador++);
+        (*contador)++;
     }
 }
 
@@ -92,7 +93,6 @@ void    AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int 
     Funcion que añade cada batallon de soldados/arqueros/zombies
     a su correspondiente localizacion en el mapa
 */
-
 void    AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa)
 {
     int mapa0 = 0, mapa1 = 0, mapa2 = 0, mapa3 = 0, mapa4 = 0, mapa5 = 0, mapa6 = 0;
@@ -234,7 +234,6 @@ void    AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa)
         }
     }
 
-
     AddGeneralesMapa(westeros, mapa, &mapa0, 0);
     AddGeneralesMapa(westeros, mapa, &mapa1, 1);
     AddGeneralesMapa(westeros, mapa, &mapa2, 2);
@@ -242,16 +241,15 @@ void    AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa)
     AddGeneralesMapa(westeros, mapa, &mapa4, 4);
     AddGeneralesMapa(westeros, mapa, &mapa5, 5);
     AddGeneralesMapa(westeros, mapa, &mapa6, 6);
-
 }
 
 
-    //Funcion para crear el fichero map.txt
-    //map.txt almacena las posiciones de cada batallon y cada general
-    //con sus correspondientes fuerzas y simbolo representativo
-    //El jugador podrá consultarlo y ver donde le interesa atacar
-
-
+/*
+    Funcion para crear el fichero map.txt
+    map.txt almacena las posiciones de cada batallon y cada general
+    con sus correspondientes fuerzas y simbolo representativo
+    El jugador podrá consultarlo y ver donde le conviene atacar
+*/
 void    CreateMap(t_westeros *westeros, t_mapa *mapa)
 {
     FILE *map;
@@ -273,7 +271,6 @@ void    CreateMap(t_westeros *westeros, t_mapa *mapa)
 
         // Asignando valores para las 7 localizaciones
 
-
         AddEnemigosMapa(westeros, mapa);
 
         ContenidoMapaXLocalizacion(mapa, 0, map);
@@ -287,10 +284,12 @@ void    CreateMap(t_westeros *westeros, t_mapa *mapa)
         fclose(map);
     }
 }
+
 int     ZonaConquistada(t_mapa *mapa, int localizacion)
 {
     int conquista =0;
     int i = 0;
+
 
     if (localizacion == 1)
     {
@@ -300,14 +299,11 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
                 i++;
             if (i == 30)
                 conquista = 1;
-
-
         }
     }
     if (localizacion == 2)
     {
         for (int j=0; j<30; j++)
-
         {
             if(mapa[1].enemigos_fuerza[j] == 0)
                 i++;
@@ -317,7 +313,7 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
     }
     if (localizacion == 3)
     {
-           for (int j=0; j<30; j++)
+        for (int j=0; j<30; j++)
         {
             if(mapa[2].enemigos_fuerza[j] == 0)
                 i++;
@@ -328,7 +324,6 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
     if (localizacion == 4)
     {
         for (int j=0; j<30; j++)
-
         {
             if(mapa[3].enemigos_fuerza[j] == 0)
                 i++;
@@ -339,7 +334,6 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
     if (localizacion == 5)
     {
         for (int j=0; j<30; j++)
-
         {
             if(mapa[4].enemigos_fuerza[j] == 0)
                 i++;
@@ -350,7 +344,6 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
     if (localizacion == 6)
     {
         for (int j=0; j<30; j++)
-
         {
             if(mapa[5].enemigos_fuerza[j] == 0)
                 i++;
@@ -361,7 +354,6 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
     if (localizacion == 7)
     {
         for (int j=0; j<30; j++)
-
         {
             if(mapa[6].enemigos_fuerza[j] == 0)
                 i++;
@@ -369,6 +361,5 @@ int     ZonaConquistada(t_mapa *mapa, int localizacion)
                 conquista = 1;
         }
     }
-    return conquista;
-
+    return (conquista);
 }

@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h> // random rand()
 #include <time.h> // time(NULL)
@@ -7,27 +8,25 @@
 #define ERROR_EJERCITO "Error al abrir el fichero jugador.txt.\n"
 
 
-typedef struct{
+typedef struct {
     int     ejercito[20];
     char    tipo[20];
     int     localizacion_ataque;
     char   *error;
-}t_jugador;
+}   t_jugador;
 
 
-
-typedef struct{
+typedef struct {
     int     enemigos_fuerza[30];
     char    enemigos_tipo[30];
     int     zona_conquistada;
-}t_mapa;
+}   t_mapa;
 
-
-//Estructura que contiene informacion del ejercito enemigo
-
-
-typedef struct{
-int      bsoldados[20];
+/*
+    Estructura que contiene informacion del ejercito enemigo
+*/
+typedef struct {
+   int      bsoldados[20];
    int      localizaciones_soldados[20];
    int      barqueros[10];
    int      localizaciones_arqueros[10];
@@ -46,24 +45,23 @@ int      bsoldados[20];
    int      Stannis;
    int      localizacion_stannis;
    char     *error;
-}t_westeros;
+}   t_westeros;
 
 
 // westeros.c
-void CreateWesterosFile(t_westeros *westeros, t_mapa *mapa);
-t_westeros  *WesterosConfiguration(t_westeros *westeros);
+void        CreateWesterosFile(t_westeros *westeros);
+t_westeros  *WesterosConfiguration(t_westeros *westeros, t_mapa *mapa);
 
 // jugador.c
-int  AskConfiguration(t_mapa *mapa);
-void EjercitoJugador(t_jugador *jugador);
+int         AskConfiguration(t_mapa *mapa);
+void        EjercitoJugador(t_jugador *jugador);
 
 // mapa.c
-void ContenidoMapaXLocalizacion(t_mapa *mapa, int localizacion, FILE *map );
-void AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int localizacion);
-void AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa);
-void CreateMap(t_westeros *westeros, t_mapa *mapa);
-int  ZonaConquistada(t_mapa *mapa, int localizacion);
-
+void        ContenidoMapaXLocalizacion(t_mapa *mapa, int localizacion, FILE *map);
+void        AddGeneralesMapa(t_westeros *westeros, t_mapa *mapa, int *contador, int localizacion);
+void        AddEnemigosMapa(t_westeros *westeros, t_mapa *mapa);
+void        CreateMap(t_westeros *westeros, t_mapa *mapa);
+int         ZonaConquistada(t_mapa *mapa, int localizacion);
 
 // batalla.c
-int Ataque(t_mapa *mapa, t_jugador *jugador, int localizacion);
+int     Ataque(t_mapa *mapa, t_jugador *jugador, int localizacion);
